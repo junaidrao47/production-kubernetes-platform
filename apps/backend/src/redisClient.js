@@ -13,4 +13,10 @@ async function connectRedis() {
   }
 }
 
-module.exports = { redisClient, connectRedis };
+async function closeRedis() {
+  if (redisClient.isOpen) {
+    await redisClient.quit();
+  }
+}
+
+module.exports = { redisClient, connectRedis, closeRedis };

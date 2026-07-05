@@ -24,4 +24,8 @@ async function ensureSchema() {
   `);
 }
 
-module.exports = { pool, ensureSchema };
+async function closePool() {
+  await pool.end();
+}
+
+module.exports = { pool, ensureSchema, closePool };
